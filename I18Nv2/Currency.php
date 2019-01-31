@@ -15,16 +15,14 @@
 
 /**
  * I18Nv2::Currency
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/CommonList.php';
-
 /**
  * I18Nv2_Currency
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @version     $Revision$
  * @access      public
@@ -43,7 +41,7 @@ class I18Nv2_Currency extends I18Nv2_CommonList
     {
         return @include 'I18Nv2/Currency/' . $language . '.php';
     }
-    
+
     /**
      * Change case of code key
      *

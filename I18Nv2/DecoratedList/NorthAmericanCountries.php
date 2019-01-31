@@ -15,16 +15,14 @@
 
 /**
  * I18Nv2::DecoratedList::NorthAmericanCountries
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/DecoratedList/Filter.php';
-
 /**
  * I18Nv2_DecoratedList_NorthAmericanCountries
- * 
+ *
  * Use only for decorating I18Nv2_Country.
  *
  * @author      Michael Wallner <mike@php.net>
@@ -36,7 +34,7 @@ class I18Nv2_DecoratedList_NorthAmericanCountries extends I18Nv2_DecoratedList_F
 {
     /**
      * Keys for NorthAmerican countries
-     * 
+     *
      * @var array
      */
     var $elements = array(

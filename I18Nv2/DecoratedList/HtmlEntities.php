@@ -15,12 +15,10 @@
 
 /**
  * I18Nv2::DecoratedList::HtmlEntities
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
-
-require_once 'I18Nv2/DecoratedList.php';
 
 /**
  * I18Nv2_Decorator_HtmlEntities
@@ -32,9 +30,9 @@ require_once 'I18Nv2/DecoratedList.php';
  */
 class I18Nv2_DecoratedList_HtmlEntities extends I18Nv2_DecoratedList
 {
-    /** 
+    /**
      * decorate
-     * 
+     *
      * @access  protected
      * @return  mixed
      * @param   mixed   $value

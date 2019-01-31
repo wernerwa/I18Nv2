@@ -15,16 +15,14 @@
 
 /**
  * I18Nv2::Region
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/SpecialList.php';
-
 /**
  * I18Nv2_Region
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @version     $Revision$
  * @access      public
@@ -43,7 +41,7 @@ class I18Nv2_Region extends I18Nv2_SpecialList
     {
         return @include 'I18Nv2/Region/'. $this->key .'/'. $language .'.php';
     }
-    
+
     /**
      * Change case of code key
      *

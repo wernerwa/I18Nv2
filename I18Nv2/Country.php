@@ -15,16 +15,14 @@
 
 /**
  * I18Nv2::Country
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/CommonList.php';
-
 /**
  * I18Nv2_Country
- * 
+ *
  * List of ISO-3166 two letter country code to country name mapping.
  *
  * @author      Michael Wallner <mike@php.net>
@@ -45,7 +43,7 @@ class I18Nv2_Country extends I18Nv2_CommonList
     {
         return @include 'I18Nv2/Country/' . $language . '.php';
     }
-    
+
     /**
      * Change case of code key
      *

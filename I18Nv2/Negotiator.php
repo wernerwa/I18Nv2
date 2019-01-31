@@ -26,7 +26,7 @@
 
 /**
  * I18Nv2_Negotiator
- * 
+ *
  * @author      Naoki Shima <murahachibu@php.net>
  * @author      Wolfram Kriesing <wk@visionp.de>
  * @author      Michael Wallner <mike@php.net>
@@ -38,20 +38,20 @@ class I18Nv2_Negotiator
 {
     /**
      * I18Nv2_Language
-     * 
+     *
      * @var     object
      * @access  public
      */
     var $I18NLang = null;
-    
+
     /**
      * I18Nv2_Country
-     * 
+     *
      * @var     object
      * @access  public
      */
     var $I18NCountry = null;
-    
+
     /**
      * Save default country code.
      *
@@ -78,39 +78,39 @@ class I18Nv2_Negotiator
 
     /**
      * HTTP_ACCEPT_CHARSET
-     * 
+     *
      * @var     array
      * @access  private
      */
     var $_acceptEncoding = array();
-    
+
     /**
      * HTTP_ACCEPT_LANGUAGE
-     * 
+     *
      * @var     array
      * @access  private
      */
     var $_acceptLanguage = array();
-    
+
     /**
      * Language variations
-     * 
+     *
      * @var     array
      * @access  private
      */
     var $_langVariation = array();
-    
+
     /**
      * Countries
-     * 
+     *
      * @var     array
      * @access  private
      */
     var $_country = array();
-    
+
     /**
      * Constructor
-     * 
+     *
      * Find language code, country code, encoding code, and dialect or variant
      * of Locale setting in HTTP request headers.
      *
@@ -123,7 +123,7 @@ class I18Nv2_Negotiator
     {
         $this->__construct($defaultLanguage, $defaultEncoding, $defaultCountry);
     }
-    
+
     /**
      * ZE2 Constructor
      * @ignore
@@ -133,11 +133,11 @@ class I18Nv2_Negotiator
         $this->_defaultCountry  = $defaultCountry;
         $this->_defaultLanguage = $defaultLanguage;
         $this->_defaultEncoding  = $defaultEncoding;
-        
+
         $this->_negotiateLanguage();
         $this->_negotiateEncoding();
     }
-    
+
     /**
      * Negotiate Language
      *
@@ -168,7 +168,7 @@ class I18Nv2_Negotiator
                     $this->singleI18NCountry();
                     if ($this->I18NCountry->isValidCode($sub)) {
                         $this->_country[$lang][] = strToUpper($sub);
-                    } else { 
+                    } else {
                         $this->_langVariation[$lang][] = $sub;
                     }
                 }
@@ -176,7 +176,7 @@ class I18Nv2_Negotiator
             $this->_acceptLanguage[] = $lang;
         }
     }
-    
+
     /**
      * Negotiate Encoding
      *
@@ -194,7 +194,7 @@ class I18Nv2_Negotiator
             }
         }
     }
-    
+
     /**
      * Find Country Match
      *
@@ -211,7 +211,7 @@ class I18Nv2_Negotiator
             $this->_defaultCountry
         );
     }
- 
+
     /**
      * Return variant info for passed parameter.
      *
@@ -226,7 +226,7 @@ class I18Nv2_Negotiator
 
     /**
      * Find Encoding match
-     * 
+     *
      * @deprecated
      * @access  public
      * @return  string
@@ -235,15 +235,15 @@ class I18Nv2_Negotiator
     function getCharsetMatch($encodings = null)
     {
         return $this->_getMatch(
-            $encodings, 
-            $this->_acceptEncoding, 
+            $encodings,
+            $this->_acceptEncoding,
             $this->_defaultEncoding
         );
     }
 
     /**
      * Find Encoding match
-     * 
+     *
      * @access  public
      * @return  string
      * @param   array   $encodings
@@ -251,8 +251,8 @@ class I18Nv2_Negotiator
     function getEncodingMatch($encodings = null)
     {
         return $this->_getMatch(
-            $encodings, 
-            $this->_acceptEncoding, 
+            $encodings,
+            $this->_acceptEncoding,
             $this->_defaultEncoding
         );
     }
@@ -267,12 +267,12 @@ class I18Nv2_Negotiator
     function getLanguageMatch($langs = null)
     {
         return $this->_getMatch(
-            $langs, 
+            $langs,
             $this->_acceptLanguage,
             $this->_defaultLanguage
         );
     }
-    
+
     /**
      * Find locale match
      *
@@ -287,11 +287,11 @@ class I18Nv2_Negotiator
         $ctry = $this->_getMatch($countries, @$this->_country[$lang], $this->_defaultCountry);
         return $lang . ($ctry ? '_' . $ctry : '');
     }
-    
+
     /**
      * Return first matched value from first and second parameter.
      * If there is no match found, then return third parameter.
-     * 
+     *
      * @access  private
      * @return  string
      * @param   array   $needle
@@ -311,10 +311,10 @@ class I18Nv2_Negotiator
         }
         return $default;
     }
-    
+
     /**
-     * Find Country name for country code passed 
-     * 
+     * Find Country name for country code passed
+     *
      * @access  private
      * @return  void
      * @param   string  $code   country code
@@ -326,8 +326,8 @@ class I18Nv2_Negotiator
     }
 
     /**
-     * Find Country name for country code passed 
-     * 
+     * Find Country name for country code passed
+     *
      * @access  private
      * @return  void
      * @param   string      $code   language code
@@ -340,7 +340,7 @@ class I18Nv2_Negotiator
 
     /**
      * Create the Language helper object
-     * 
+     *
      * @access  public
      * @return  object
      */
@@ -348,8 +348,8 @@ class I18Nv2_Negotiator
     {
         if (!isset($this->I18NLang)) {
             include_once 'I18Nv2/Language.php';
-            $this->I18NLang = &new I18Nv2_Language(
-                $this->_defaultLanguage, 
+            $this->I18NLang  = new I18Nv2_Language(
+                $this->_defaultLanguage,
                 $this->_defaultEncoding
             );
         }
@@ -358,7 +358,7 @@ class I18Nv2_Negotiator
 
     /**
      * Create the Country helper object
-     * 
+     *
      * @access  public
      * @return  object
      */
@@ -366,7 +366,7 @@ class I18Nv2_Negotiator
     {
         if (!isset($this->I18NCountry)) {
             include_once 'I18Nv2/Country.php';
-            $this->I18NCountry = &new I18Nv2_Country(
+            $this->I18NCountry  = new I18Nv2_Country(
                 $this->_defaultLanguage,
                 $this->_defaultEncoding
             );

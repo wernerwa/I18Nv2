@@ -15,16 +15,14 @@
 
 /**
  * I18Nv2::DecoratedList::Filter
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/DecoratedList.php';
-
 /**
  * I18Nv2_DecoratedList_Filter
- * 
+ *
  * The Filter Decorator only operates on getAllCodes().
  *
  * @author      Michael Wallner <mike@php.net>
@@ -36,27 +34,27 @@ class I18Nv2_DecoratedList_Filter extends I18Nv2_DecoratedList
 {
     /**
      * Filter
-     * 
+     *
      * exclude|include resp. false|true
-     * 
+     *
      * @access  public
      * @var     mixed
      */
     var $filter = 'include';
-    
+
     /**
      * Elements
-     * 
+     *
      * Keys that should be filtered
-     * 
+     *
      * @access  public
      * @var     array
      */
     var $elements = array();
-    
-    /** 
+
+    /**
      * decorate
-     * 
+     *
      * @access  protected
      * @return  mixed
      * @param   mixed   $value
@@ -66,7 +64,7 @@ class I18Nv2_DecoratedList_Filter extends I18Nv2_DecoratedList
         if (is_array($value)) {
             $result = array();
             $filter = array_map(
-                array(&$this->list, 'changeKeyCase'), 
+                array(&$this->list, 'changeKeyCase'),
                 $this->elements
             );
             switch ($this->filter)
@@ -79,7 +77,7 @@ class I18Nv2_DecoratedList_Filter extends I18Nv2_DecoratedList
                         }
                     }
                 break;
-                
+
                 case 'include':
                 case true:
                     foreach ($value as $key => $val) {

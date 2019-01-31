@@ -15,17 +15,16 @@
 
 /**
  * I18Nv2::DecoratedList::HtmlSpecialchars
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/DecoratedList.php';
 
 /**
  * I18Nv2_Decorator_HtmlSpecialchars
- * 
- * When you are going to serve XHTML as XML or XHTML+XML then you will get 
+ *
+ * When you are going to serve XHTML as XML or XHTML+XML then you will get
  * problems while displaying umlauts etc. as their HTML entities.
  *
  * @author      Michael Wallner <mike@php.net>
@@ -35,9 +34,9 @@ require_once 'I18Nv2/DecoratedList.php';
  */
 class I18Nv2_DecoratedList_HtmlSpecialchars extends I18Nv2_DecoratedList
 {
-    /** 
+    /**
      * decorate
-     * 
+     *
      * @access  protected
      * @return  mixed
      * @param   mixed   $value
@@ -45,7 +44,7 @@ class I18Nv2_DecoratedList_HtmlSpecialchars extends I18Nv2_DecoratedList
     function decorate($value)
     {
         if (is_string($value)) {
-            return htmlSpecialchars($value, ENT_QUOTES, 
+            return htmlSpecialchars($value, ENT_QUOTES,
                 $this->list->getEncoding());
         } elseif (is_array($value)) {
             return array_map(array(&$this, 'decorate'), $value);

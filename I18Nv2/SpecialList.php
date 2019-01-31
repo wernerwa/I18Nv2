@@ -15,17 +15,15 @@
 
 /**
  * I18Nv2::SpecialList
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/CommonList.php';
- 
-/** 
+/**
  * I18Nv2_SpecialList
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @version     $Revision$
  * @access      public
@@ -34,12 +32,12 @@ class I18Nv2_SpecialList extends I18Nv2_CommonList
 {
     /**
      * Key
-     * 
+     *
      * @access  protected
      * @var     string
      */
     var $key = '';
-    
+
     /**
      * Constructor
      *

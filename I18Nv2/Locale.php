@@ -15,7 +15,7 @@
 
 /**
  * I18Nv2::Locale
- * 
+ *
  * @package      I18Nv2
  * @category     Internationalisation
  */
@@ -41,9 +41,8 @@ define('I18Nv2_DATETIME_FULL',              'full');
 /**#@-*/
 
 require_once 'PEAR.php';
-require_once 'I18Nv2.php';
 
-/** 
+/**
  * I18Nv2_Locale
  *
  * @author       Michael Wallner <mike@php.net>
@@ -55,47 +54,47 @@ class I18Nv2_Locale
 {
     /**
      * Initialized Locale
-     * 
+     *
      * @access  protected
      * @var     string
      */
     var $initialized = '';
-    
+
     /**
      * Full day names
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $days = array();
-    
+
     /**
      * Full month names
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $months = array();
-    
+
     /**
      * Abbreviated day names
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $abbrDays = array();
-    
+
     /**
      * Abbreviated month names
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $abbrMonths = array();
-    
+
     /**
      * Registered date formats
-     * 
+     *
      * @access  protected
      * @var     array
      */
@@ -103,7 +102,7 @@ class I18Nv2_Locale
 
     /**
      * Registered time formats
-     * 
+     *
      * @access  protected
      * @var     array
      */
@@ -111,7 +110,7 @@ class I18Nv2_Locale
 
     /**
      * Registered datetime formats
-     * 
+     *
      * @access  protected
      * @var     array
      */
@@ -119,7 +118,7 @@ class I18Nv2_Locale
 
     /**
      * Registered number formats
-     * 
+     *
      * @access  protected
      * @var     array
      */
@@ -127,15 +126,15 @@ class I18Nv2_Locale
 
     /**
      * Registered currency formats
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $currencyFormats = array();
-    
+
     /**
      * Current time format
-     * 
+     *
      * @access  protected
      * @var     mixed
      */
@@ -143,7 +142,7 @@ class I18Nv2_Locale
 
     /**
      * Current date format
-     * 
+     *
      * @access  protected
      * @var     mixed
      */
@@ -151,7 +150,7 @@ class I18Nv2_Locale
 
     /**
      * Current datetime format
-     * 
+     *
      * @access  protected
      * @var     mixed
      */
@@ -159,7 +158,7 @@ class I18Nv2_Locale
 
     /**
      * Current number format
-     * 
+     *
      * @access  protected
      * @var     mixed
      */
@@ -167,44 +166,44 @@ class I18Nv2_Locale
 
     /**
      * Current currency format
-     * 
+     *
      * @access  protected
      * @var     mixed
      */
     var $currentCurrencyFormat = null;
-    
+
     /**
      * Custom formats
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $customFormats = array();
-    
+
     /**
      * Locale Data Cache
-     * 
+     *
      * @access  protected
      * @var     array
      */
     var $cache = array();
-    
+
     /**
      * Whether to reset the global locale after each call
-     * 
+     *
      * @access  protected
      * @var     bool
      */
     var $paranoid = false;
-    
+
     /**
      * Store system locale for paranoid mode
-     * 
+     *
      * @access  protected
      * @var     string
      */
     var $usedLocale = '';
-    
+
     /**
      * Constructor
      *
@@ -217,10 +216,10 @@ class I18Nv2_Locale
         $this->setLocale($locale);
         $this->setParanoid($paranoid);
     }
-    
+
     /**
      * Set locale
-     * 
+     *
      * This automatically calls I18Nv2_Locale::initialize()
      *
      * @access  public
@@ -233,7 +232,7 @@ class I18Nv2_Locale
         if (!$force && $this->initialized == $locale) {
             $last = I18Nv2::lastLocale(0, true);
             if (is_array($last)) {
-                if (    $locale == $last['syslocale']   || 
+                if (    $locale == $last['syslocale']   ||
                         $locale == $last['locale']      ||
                         $locale == $last['language']) {
                     return $last['syslocale'];
@@ -242,10 +241,10 @@ class I18Nv2_Locale
                 return $last;
             }
         }
-        
+
         return $this->initialize($locale);
     }
-    
+
     /**
      * Initialize
      *
@@ -256,7 +255,7 @@ class I18Nv2_Locale
     {
         $this->initialized = $locale;
         $this->usedLocale = I18Nv2::setLocale($locale);
-        
+
         $jan = $mon = mktime(1,1,1,1,1,1990);
         $feb = $tue = mktime(1,1,1,2,6,1990);
         $mar = $wed = mktime(1,1,1,3,7,1990);
@@ -269,7 +268,7 @@ class I18Nv2_Locale
         $oct = mktime(1,1,1,10,1,1990);
         $nov = mktime(1,1,1,11,1,1990);
         $dec = mktime(1,1,1,12,1,1990);
-        
+
         if (!$this->loadCache($this->usedLocale)) {
             $this->days = array(
                 strftime('%A', $sun),
@@ -280,7 +279,7 @@ class I18Nv2_Locale
                 strftime('%A', $fri),
                 strftime('%A', $sat),
             );
-            
+
             $this->abbrDays = array(
                 strftime('%a', $sun),
                 strftime('%a', $mon),
@@ -290,7 +289,7 @@ class I18Nv2_Locale
                 strftime('%a', $fri),
                 strftime('%a', $sat),
             );
-    
+
             $this->months = array(
                 strftime('%B', $jan),
                 strftime('%B', $feb),
@@ -305,7 +304,7 @@ class I18Nv2_Locale
                 strftime('%B', $nov),
                 strftime('%B', $dec),
             );
-            
+
             $this->abbrMonths = array(
                 strftime('%b', $jan),
                 strftime('%b', $feb),
@@ -320,9 +319,9 @@ class I18Nv2_Locale
                 strftime('%b', $nov),
                 strftime('%b', $dec),
             );
-            
+
             $info = I18Nv2::getInfo();
-            
+
             /*
              * The currency symbol is old shit on Win2k, though.
              * Some get extended/overwritten with other local conventions.
@@ -357,7 +356,7 @@ class I18Nv2_Locale
                     $info['p_sign_posn'],
                 ),
             );
-            
+
             $this->numberFormats = array(
                 I18Nv2_NUMBER_FLOAT => array(
                     $info['frac_digits'],
@@ -369,30 +368,30 @@ class I18Nv2_Locale
                     $info['decimal_point'],
                     $info['thousands_sep']
                 ),
-    
+
             );
-            
+
             $this->loadExtension();
-    
+
             if (empty($this->dateTimeFormats) && !empty($this->dateFormats) && !empty($this->timeFormats)) {
                 $this->dateTimeFormats = array(
-                    I18Nv2_DATETIME_SHORT   => 
+                    I18Nv2_DATETIME_SHORT   =>
                         $this->dateFormats[I18Nv2_DATETIME_SHORT]
                         . ', ' .
                         $this->timeFormats[I18Nv2_DATETIME_SHORT],
-                    I18Nv2_DATETIME_MEDIUM   => 
+                    I18Nv2_DATETIME_MEDIUM   =>
                         $this->dateFormats[I18Nv2_DATETIME_MEDIUM]
                         . ', ' .
                         $this->timeFormats[I18Nv2_DATETIME_MEDIUM],
-                    I18Nv2_DATETIME_DEFAULT   => 
+                    I18Nv2_DATETIME_DEFAULT   =>
                         $this->dateFormats[I18Nv2_DATETIME_DEFAULT]
                         . ', ' .
                         $this->timeFormats[I18Nv2_DATETIME_DEFAULT],
-                    I18Nv2_DATETIME_LONG   => 
+                    I18Nv2_DATETIME_LONG   =>
                         $this->dateFormats[I18Nv2_DATETIME_LONG]
                         . ', ' .
                         $this->timeFormats[I18Nv2_DATETIME_LONG],
-                    I18Nv2_DATETIME_FULL   => 
+                    I18Nv2_DATETIME_FULL   =>
                         $this->dateFormats[I18Nv2_DATETIME_FULL]
                         . ', ' .
                         $this->timeFormats[I18Nv2_DATETIME_FULL],
@@ -400,19 +399,19 @@ class I18Nv2_Locale
             }
             $this->updateCache($this->usedLocale);
         }
-        
+
         $this->setDefaults();
-        
+
         if ($this->paranoid) {
             setlocale(LC_ALL, 'C');
         }
-        
+
         return $this->usedLocale;
     }
-    
+
     /**
      * Update Cache
-     * 
+     *
      * @access  protected
      * @return  void
      * @param   string  $locale
@@ -422,8 +421,8 @@ class I18Nv2_Locale
         if (!isset($this->cache[$locale])) {
             $cache = get_object_vars($this);
             $cvars = preg_grep(
-                '/^(init|current|custom|cache)/', 
-                array_keys($cache), 
+                '/^(init|current|custom|cache)/',
+                array_keys($cache),
                 PREG_GREP_INVERT
             );
             foreach ($cvars as $var) {
@@ -431,10 +430,10 @@ class I18Nv2_Locale
             }
         }
     }
-    
+
     /**
      * Load Cache
-     * 
+     *
      * @access  protected
      * @return  bool
      * @param   string  $locale
@@ -449,7 +448,7 @@ class I18Nv2_Locale
         }
         return true;
     }
-    
+
     /**
      * Loads corresponding locale extension
      *
@@ -468,7 +467,7 @@ class I18Nv2_Locale
             }
         }
     }
-    
+
     /**
      * Set defaults
      *
@@ -503,12 +502,12 @@ class I18Nv2_Locale
             $this->currentCurrencyFormat = $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL];
         }
     }
-    
+
     /**
      * Set Paranoid Mode
-     * 
+     *
      * Whether to reset to the C-locale after every call.
-     * 
+     *
      * @access  public
      * @return  void
      * @param   bool    $paranoid Whether to enable paranoid mode.
@@ -518,7 +517,7 @@ class I18Nv2_Locale
         $this->paranoid = (bool) $paranoid;
         $paranoid and setLocale(LC_ALL, 'C');
     }
-    
+
     /**
      * Set currency format
      *
@@ -542,7 +541,7 @@ class I18Nv2_Locale
         }
         return true;
     }
-    
+
     /**
      * Set number format
      *
@@ -566,7 +565,7 @@ class I18Nv2_Locale
         }
         return true;
     }
-    
+
     /**
      * Set date format
      *
@@ -590,7 +589,7 @@ class I18Nv2_Locale
         }
         return true;
     }
-    
+
     /**
      * Set time format
      *
@@ -614,7 +613,7 @@ class I18Nv2_Locale
         }
         return true;
     }
-    
+
     /**
      * Set datetime format
      *
@@ -638,14 +637,14 @@ class I18Nv2_Locale
         }
         return true;
     }
-    
+
     /**
      * Set custom format
      *
      * If <var>$format</var> is omitted, the custom format for <var>$type</var>
      * will be dsicarded - if both vars are omitted all custom formats will
      * be discarded.
-     * 
+     *
      * @access  public
      * @return  void
      * @param   mixed   $type
@@ -663,7 +662,7 @@ class I18Nv2_Locale
             $this->customFormats[$type] = $format;
         }
     }
-    
+
     /**
      * Format currency
      *
@@ -676,31 +675,31 @@ class I18Nv2_Locale
     function formatCurrency($value, $overrideFormat = null, $overrideSymbol = null)
     {
         @list(
-            $symbol, 
-            $digits, 
-            $decpoint, 
-            $thseparator, 
-            $sign['-'], 
-            $sign['+'], 
-            $precedes['-'], 
-            $precedes['+'], 
-            $separate['-'], 
+            $symbol,
+            $digits,
+            $decpoint,
+            $thseparator,
+            $sign['-'],
+            $sign['+'],
+            $precedes['-'],
+            $precedes['+'],
+            $separate['-'],
             $separate['+'],
             $position['-'],
             $position['+']
-        ) = isset($overrideFormat) ? 
+        ) = isset($overrideFormat) ?
             $this->currencyFormats[$overrideFormat] :
             $this->currentCurrencyFormat;
 
         if (isset($overrideSymbol)) {
             $symbol = $overrideSymbol;
         }
-        
+
         // number_format the absolute value
         $amount = number_format(abs($value), $digits, $decpoint, $thseparator);
-        
+
         $S = $value < 0 ? '-' : '+';
-        
+
         // check posittion of the positive/negative sign(s)
         switch ($position[$S])
         {
@@ -710,7 +709,7 @@ class I18Nv2_Locale
             case 3: $symbol  = $sign[$S] . $symbol; break;
             case 4: $symbol .= $sign[$S];           break;
         }
-        
+
         // currency symbol precedes amount
         if ($precedes[$S]) {
             $amount = $symbol . ($separate[$S] ? ' ':'') . $amount;
@@ -719,10 +718,10 @@ class I18Nv2_Locale
         else {
             $amount .= ($separate[$S] ? ' ':'') . $symbol;
         }
-        
+
         return $amount;
     }
-    
+
     /**
      * Format a number
      *
@@ -738,7 +737,7 @@ class I18Nv2_Locale
             $this->currentNumberFormat;
         return number_format($value, $dig, $dec, $sep);
     }
-    
+
     /**
      * Format a date
      *
@@ -749,14 +748,14 @@ class I18Nv2_Locale
      */
     function formatDate($timestamp = null, $overrideFormat = null)
     {
-        $format = isset($overrideFormat) ? 
+        $format = isset($overrideFormat) ?
             $this->dateFormats[$overrideFormat] : $this->currentDateFormat;
         $this->paranoid and setLocale(LC_ALL, $this->usedLocale);
         $date = strftime($format, isset($timestamp) ? $timestamp : time());
         $this->paranoid and setLocale(LC_ALL, 'C');
         return $date;
     }
-    
+
     /**
      * Format a time
      *
@@ -767,7 +766,7 @@ class I18Nv2_Locale
      */
     function formatTime($timestamp = null, $overrideFormat = null)
     {
-        $format = isset($overrideFormat) ? 
+        $format = isset($overrideFormat) ?
             $this->timeFormats[$overrideFormat] : $this->currentTimeFormat;
         $this->paranoid and setLocale(LC_ALL, $this->usedLocale);
         $time = strftime($format, isset($timestamp) ? $timestamp : time());
@@ -786,14 +785,14 @@ class I18Nv2_Locale
     function formatDateTime($timestamp = null, $overrideFormat = null)
     {
         $format = isset($overrideFormat) ?
-            $this->dateTimeFormats[$overrideFormat] : 
+            $this->dateTimeFormats[$overrideFormat] :
             $this->currentDateTimeFormat;
         $this->paranoid and setLocale(LC_ALL, $this->usedLocale);
         $date = strftime($format, isset($timestamp) ? $timestamp : time());
         $this->paranoid and setLocale(LC_ALL, 'C');
         return $date;
     }
-    
+
     /**
      * Locale time
      *
@@ -808,7 +807,7 @@ class I18Nv2_Locale
         $this->paranoid and setLocale(LC_ALL, 'C');
         return $time;
     }
-    
+
     /**
      * Locale date
      *
@@ -823,7 +822,7 @@ class I18Nv2_Locale
         $this->paranoid and setLocale(LC_ALL, 'C');
         return $date;
     }
-    
+
     /**
      * Day name
      *
@@ -848,7 +847,7 @@ class I18Nv2_Locale
             return $this->days[$weekday];
         }
     }
-    
+
     /**
      * Month name
      *

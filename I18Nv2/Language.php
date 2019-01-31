@@ -15,18 +15,16 @@
 
 /**
  * I18Nv2::Language
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
 
-require_once 'I18Nv2/CommonList.php';
-
 /**
  * I18Nv2_Language
- * 
+ *
  * List of ISO-639-1 two letter language code to language name mapping.
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @version     $Revision$
  * @package     I18Nv2
