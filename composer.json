@@ -1,0 +1,37 @@
+{
+	"name": "pear/i18nv2",
+	"description": "Internationalization",
+	"type": "library",
+	"autoload": {
+		"psr-0": {
+			"I18Nv2": ""
+		}
+	},
+	"require": {
+		"php": ">=4.0.6",
+		"ext-pcre": ">=4.0.6",
+		"ext-iconv": ">=4.0.6"
+	},
+	"license": "PHP",
+	"authors": [
+		{
+			"name": "Michael Wallner"
+		},
+		{
+			"name": "Helgo Thormar"
+		},
+		{
+			"name": "Lorenzo Alberton"
+		},
+		{
+			"name": "Setlian Mocanita"
+		},
+		{
+			"name": "Daniel O'Connor"
+		},
+		{
+			"name": "Werner Wank"
+		}
+	],
+	"minimum-stability": "beta"
+}
