@@ -9,7 +9,7 @@
 	},
 	"require": {
 		"php": ">=4.0.6",
-		"ext-pcre": ">=4.0.6",
+		"ext-pcre": "*",
 		"ext-iconv": ">=4.0.6"
 	},
 	"license": "PHP",
