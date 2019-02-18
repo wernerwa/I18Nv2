@@ -15,7 +15,7 @@
 
 /**
  * I18Nv2::Encoding
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
@@ -24,7 +24,7 @@
  * I18Nv2_Encoding
  *
  * List of common and not so common character sets and their aliases.
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @version     $Revision$
  * @package     I18Nv2
@@ -35,68 +35,58 @@ class I18Nv2_Encoding
 {
     /**
      * Standardize
-     * 
-     * @static
-     * @access  public
+     *
      * @return  string
      * @param   string  $encoding
      */
-    function standardize($encoding)
+    public static function standardize($encoding)
     {
         return strToUpper(preg_replace('/[^[:alnum:]-]/', '-', $encoding));
     }
-    
+
     /**
      * Is Encoding
-     * 
-     * @static
-     * @access  public
+     *
      * @return  bool
      * @param   string  $encoding
      */
-    function isEncoding($encoding)
+    public static function isEncoding($encoding)
     {
         $name = I18Nv2_Encoding::standardize($encoding);
         return isset($GLOBALS['_I18Nv2_Encoding_Names'][$name]);
     }
-    
+
     /**
      * Is Alias
-     * 
-     * @static
-     * @access  public
+     *
      * @return  bool
      * @param   string  $encoding
      */
-    function isAlias($encoding)
+    public static function isAlias($encoding)
     {
         return (bool) I18Nv2_Encoding::forAlias($encoding);
     }
-    
+
     /**
      * Exists
-     * 
-     * @static
-     * @access  public
+     *
      * @return  bool
      * @param   string  $encoding
      */
-    function exists($encoding)
+    public static function exists($encoding)
     {
         $name = I18Nv2_Encoding::standardize($encoding);
         return isset($GLOBALS['_I18Nv2_Encoding_Names'][$name]) or
             I18Nv2_Encoding::forAlias($name) !== false;
     }
-    
+
     /**
      * Name Of
-     * 
-     * @static
-     * @access  public
+     *
      * @return  string|false
      * @param   string      $encoding
      */
-    function nameOf($encoding)
+    public static function nameOf($encoding)
     {
         $encoding = I18Nv2_Encoding::standardize($encoding);
         if (isset($GLOBALS['_I18Nv2_Encoding_Names'][$encoding])) {
@@ -104,16 +94,14 @@ class I18Nv2_Encoding
         }
         return I18Nv2_Encoding::forAlias($encoding);
     }
-    
+
     /**
      * Aliases Of
-     * 
-     * @static
-     * @access  public
+     *
      * @return  array
      * @param   string  $encoding
      */
-    function aliasesOf($encoding)
+    public static function aliasesOf($encoding)
     {
         $name = I18Nv2_Encoding::standardize($encoding);
         if (isset($GLOBALS['_I18Nv2_Encoding_Aliases'][$name])) {
@@ -121,16 +109,14 @@ class I18Nv2_Encoding
         }
         return array();
     }
-    
+
     /**
      * For Alias
-     * 
-     * @static
-     * @access  public
+     *
      * @return  string|false
      * @param   string  $alias
      */
-    function forAlias($alias)
+    public static function forAlias($alias)
     {
         $name = I18Nv2_Encoding::standardize($alias);
         foreach ($GLOBALS['_I18Nv2_Encoding_Aliases'] as $k => $a) {
@@ -140,7 +126,6 @@ class I18Nv2_Encoding
         }
         return false;
     }
-    
 }
 
 $GLOBALS['_I18Nv2_Encoding_Names']  = array(

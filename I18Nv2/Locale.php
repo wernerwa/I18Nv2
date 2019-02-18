@@ -55,162 +55,142 @@ class I18Nv2_Locale
     /**
      * Initialized Locale
      *
-     * @access  protected
      * @var     string
      */
-    var $initialized = '';
+    protected $initialized = '';
 
     /**
      * Full day names
      *
-     * @access  protected
      * @var     array
      */
-    var $days = array();
+    protected $days = array();
 
     /**
      * Full month names
      *
-     * @access  protected
      * @var     array
      */
-    var $months = array();
+    protected $months = array();
 
     /**
      * Abbreviated day names
      *
-     * @access  protected
      * @var     array
      */
-    var $abbrDays = array();
+    protected $abbrDays = array();
 
     /**
      * Abbreviated month names
      *
-     * @access  protected
      * @var     array
      */
-    var $abbrMonths = array();
+    protected $abbrMonths = array();
 
     /**
      * Registered date formats
      *
-     * @access  protected
      * @var     array
      */
-    var $dateFormats = array();
+    protected $dateFormats = array();
 
     /**
      * Registered time formats
      *
-     * @access  protected
      * @var     array
      */
-    var $timeFormats = array();
+    protected $timeFormats = array();
 
     /**
      * Registered datetime formats
      *
-     * @access  protected
      * @var     array
      */
-    var $dateTimeFormats = array();
+    protected $dateTimeFormats = array();
 
     /**
      * Registered number formats
      *
-     * @access  protected
      * @var     array
      */
-    var $numberFormats = array();
+    protected $numberFormats = array();
 
     /**
      * Registered currency formats
      *
-     * @access  protected
      * @var     array
      */
-    var $currencyFormats = array();
+    protected $currencyFormats = array();
 
     /**
      * Current time format
      *
-     * @access  protected
      * @var     mixed
      */
-    var $currentTimeFormat = null;
+    protected $currentTimeFormat = null;
 
     /**
      * Current date format
      *
-     * @access  protected
      * @var     mixed
      */
-    var $currentDateFormat = null;
+    protected $currentDateFormat = null;
 
     /**
      * Current datetime format
      *
-     * @access  protected
      * @var     mixed
      */
-    var $currentDateTimeFormat = null;
+    protected $currentDateTimeFormat = null;
 
     /**
      * Current number format
      *
-     * @access  protected
      * @var     mixed
      */
-    var $currentNumberFormat = null;
+    protected $currentNumberFormat = null;
 
     /**
      * Current currency format
      *
-     * @access  protected
      * @var     mixed
      */
-    var $currentCurrencyFormat = null;
+    protected $currentCurrencyFormat = null;
 
     /**
      * Custom formats
      *
-     * @access  protected
      * @var     array
      */
-    var $customFormats = array();
+    protected $customFormats = array();
 
     /**
      * Locale Data Cache
      *
-     * @access  protected
      * @var     array
      */
-    var $cache = array();
+    protected $cache = array();
 
     /**
      * Whether to reset the global locale after each call
      *
-     * @access  protected
      * @var     bool
      */
-    var $paranoid = false;
+    protected $paranoid = false;
 
     /**
      * Store system locale for paranoid mode
      *
-     * @access  protected
      * @var     string
      */
-    var $usedLocale = '';
+    protected $usedLocale = '';
 
     /**
      * Constructor
      *
-     * @access  public
      * @param   string  $locale
      */
-    function I18Nv2_Locale($locale = null, $paranoid = false)
+    public function __construct($locale = null, $paranoid = false)
     {
         $locale or $locale = I18Nv2::lastLocale(0, 'locale');
         $this->setLocale($locale);
@@ -222,12 +202,11 @@ class I18Nv2_Locale
      *
      * This automatically calls I18Nv2_Locale::initialize()
      *
-     * @access  public
      * @return  string  used system locale
      * @param   string  $locale
      * @param   bool    $force
      */
-    function setLocale($locale, $force = false)
+    public function setLocale($locale, $force = false)
     {
         if (!$force && $this->initialized == $locale) {
             $last = I18Nv2::lastLocale(0, true);
@@ -248,10 +227,9 @@ class I18Nv2_Locale
     /**
      * Initialize
      *
-     * @access  public
      * @return  void
      */
-    function initialize($locale)
+    public function initialize($locale)
     {
         $this->initialized = $locale;
         $this->usedLocale = I18Nv2::setLocale($locale);
@@ -412,11 +390,10 @@ class I18Nv2_Locale
     /**
      * Update Cache
      *
-     * @access  protected
      * @return  void
      * @param   string  $locale
      */
-    function updateCache($locale)
+    protected function updateCache($locale)
     {
         if (!isset($this->cache[$locale])) {
             $cache = get_object_vars($this);
@@ -434,11 +411,10 @@ class I18Nv2_Locale
     /**
      * Load Cache
      *
-     * @access  protected
      * @return  bool
      * @param   string  $locale
      */
-    function loadCache($locale)
+    protected function loadCache($locale)
     {
         if (!isset($this->cache[$locale])) {
             return false;
@@ -452,10 +428,9 @@ class I18Nv2_Locale
     /**
      * Loads corresponding locale extension
      *
-     * @access  public
      * @return  void
      */
-    function loadExtension()
+    public function loadExtension()
     {
         $locale = I18Nv2::lastLocale(0, true);
         if (isset($locale)) {
@@ -471,10 +446,9 @@ class I18Nv2_Locale
     /**
      * Set defaults
      *
-     * @access  public
      * @return  void
      */
-    function setDefaults()
+    public function setDefaults()
     {
         $this->currentTimeFormat     = null;
         $this->currentDateFormat     = null;
@@ -508,11 +482,10 @@ class I18Nv2_Locale
      *
      * Whether to reset to the C-locale after every call.
      *
-     * @access  public
      * @return  void
      * @param   bool    $paranoid Whether to enable paranoid mode.
      */
-    function setParanoid($paranoid = false)
+    public function setParanoid($paranoid = false)
     {
         $this->paranoid = (bool) $paranoid;
         $paranoid and setLocale(LC_ALL, 'C');
@@ -521,12 +494,11 @@ class I18Nv2_Locale
     /**
      * Set currency format
      *
-     * @access  public
      * @return  mixed   Returns &true; on success or <classname>PEAR_Error</classname> on failure.
      * @param   int     $format     a I18Nv2_CURRENCY constant
      * @param   bool    $custom     whether to use a defined custom format
      */
-    function setCurrencyFormat($format, $custom = false)
+    public function setCurrencyFormat($format, $custom = false)
     {
         if ($custom) {
             if (!isset($this->customFormats[$format])) {
@@ -545,12 +517,11 @@ class I18Nv2_Locale
     /**
      * Set number format
      *
-     * @access  public
      * @return  mixed   Returns &true; on success or <classname>PEAR_Error</classname> on failure.
      * @param   int     $format     a I18Nv2_NUMBER constant
      * @param   bool    $custom     whether to use a defined custom format
      */
-    function setNumberFormat($format, $custom = false)
+    public function setNumberFormat($format, $custom = false)
     {
         if ($custom) {
             if (!isset($this->customFormats[$format])) {
@@ -569,12 +540,11 @@ class I18Nv2_Locale
     /**
      * Set date format
      *
-     * @access  public
      * @return  mixed   Returns &true; on success or <classname>PEAR_Error</classname> on failure.
      * @param   int     $format     a I18Nv2_DATETIME constant
      * @param   bool    $custom     whether to use a defined custom format
      */
-    function setDateFormat($format, $custom = false)
+    public function setDateFormat($format, $custom = false)
     {
         if ($custom) {
             if (!isset($this->customFormats[$format])) {
@@ -593,12 +563,11 @@ class I18Nv2_Locale
     /**
      * Set time format
      *
-     * @access  public
      * @return  mixed
      * @param   int     $format     a I18Nv2_DATETIME constant
      * @param   bool    $custom     whether to use a defined custom format
      */
-    function setTimeFormat($format, $custom = false)
+    public function setTimeFormat($format, $custom = false)
     {
         if ($custom) {
             if (!isset($this->customFormats[$format])) {
@@ -617,12 +586,11 @@ class I18Nv2_Locale
     /**
      * Set datetime format
      *
-     * @access  public
      * @return  mixed
      * @param   int     $format     a I18Nv2_DATETIME constant
      * @param   bool    $custom     whether to use a defined custom format
      */
-    function setDateTimeFormat($format, $custom = false)
+    public function setDateTimeFormat($format, $custom = false)
     {
         if ($custom) {
             if (!isset($this->customFormats[$format])) {
@@ -645,12 +613,11 @@ class I18Nv2_Locale
      * will be dsicarded - if both vars are omitted all custom formats will
      * be discarded.
      *
-     * @access  public
      * @return  void
      * @param   mixed   $type
      * @param   mixed   $format
      */
-    function setCustomFormat($type = null, $format = null)
+    public function setCustomFormat($type = null, $format = null)
     {
         if (!isset($format)) {
             if (!isset($type)) {
@@ -666,13 +633,12 @@ class I18Nv2_Locale
     /**
      * Format currency
      *
-     * @access  public
      * @return  string
      * @param   numeric $value
      * @param   int     $overrideFormat
      * @param   string  $overrideSymbol
      */
-    function formatCurrency($value, $overrideFormat = null, $overrideSymbol = null)
+    public function formatCurrency($value, $overrideFormat = null, $overrideSymbol = null)
     {
         @list(
             $symbol,
@@ -725,12 +691,11 @@ class I18Nv2_Locale
     /**
      * Format a number
      *
-     * @access  public
      * @return  string
      * @param   numeric $value
      * @param   int     $overrideFormat
      */
-    function formatNumber($value, $overrideFormat = null)
+    public function formatNumber($value, $overrideFormat = null)
     {
         list($dig, $dec, $sep) = isset($overrideFormat) ?
             $this->numberFormats[$overrideFormat] :
@@ -741,12 +706,11 @@ class I18Nv2_Locale
     /**
      * Format a date
      *
-     * @access  public
      * @return  string
      * @param   int     $timestamp
      * @param   int     $overrideFormat
      */
-    function formatDate($timestamp = null, $overrideFormat = null)
+    public function formatDate($timestamp = null, $overrideFormat = null)
     {
         $format = isset($overrideFormat) ?
             $this->dateFormats[$overrideFormat] : $this->currentDateFormat;
@@ -759,12 +723,11 @@ class I18Nv2_Locale
     /**
      * Format a time
      *
-     * @access  public
      * @return  string
      * @param   int     $timestamp
      * @param   int     $overrideFormat
      */
-    function formatTime($timestamp = null, $overrideFormat = null)
+    public function formatTime($timestamp = null, $overrideFormat = null)
     {
         $format = isset($overrideFormat) ?
             $this->timeFormats[$overrideFormat] : $this->currentTimeFormat;
@@ -777,12 +740,11 @@ class I18Nv2_Locale
     /**
      * Format a datetime
      *
-     * @access  public
      * @return  string
      * @param   int     $timestamp
      * @param   int     $overrideFormat
      */
-    function formatDateTime($timestamp = null, $overrideFormat = null)
+    public function formatDateTime($timestamp = null, $overrideFormat = null)
     {
         $format = isset($overrideFormat) ?
             $this->dateTimeFormats[$overrideFormat] :
@@ -796,11 +758,10 @@ class I18Nv2_Locale
     /**
      * Locale time
      *
-     * @access  public
      * @return  string
      * @param   int     $timestamp
      */
-    function time($timestamp = null)
+    public function time($timestamp = null)
     {
         $this->paranoid and setLocale(LC_ALL, $this->usedLocale);
         $time = strftime('%X', isset($timestamp) ? $timestamp : time());
@@ -811,11 +772,10 @@ class I18Nv2_Locale
     /**
      * Locale date
      *
-     * @access  public
      * @return  string
      * @param   int     $timestamp
      */
-    function date($timestamp = null)
+    public function date($timestamp = null)
     {
         $this->paranoid and setLocale(LC_ALL, $this->usedLocale);
         $date = strftime('%x', isset($timestamp) ? $timestamp : time());
@@ -826,14 +786,13 @@ class I18Nv2_Locale
     /**
      * Day name
      *
-     * @access  public
      * @return  mixed   Returns &type.string; name of weekday on success or
      *                  <classname>PEAR_Error</classname> on failure.
      * @param   int     $weekday    numerical representation of weekday
      *                              (0 = Sunday, 1 = Monday, ...)
      * @param   bool    $short  whether to return the abbreviation
      */
-    function dayName($weekday, $short = false)
+    public function dayName($weekday, $short = false)
     {
         if ($short) {
             if (!isset($this->abbrDays[$weekday])) {
@@ -851,14 +810,13 @@ class I18Nv2_Locale
     /**
      * Month name
      *
-     * @access  public
      * @return  mixed   Returns &type.string; name of month on success or
      *                  <classname>PEAR_Error</classname> on failure.
      * @param   int     $month  numerical representation of month
      *                          (0 = January, 1 = February, ...)
      * @param   bool    $short  whether to return the abbreviation
      */
-    function monthName($month, $short = false)
+    public function monthName($month, $short = false)
     {
         if ($short) {
             if (!isset($this->abbrMonths[$month])) {
@@ -873,4 +831,3 @@ class I18Nv2_Locale
         }
     }
 }
-?>

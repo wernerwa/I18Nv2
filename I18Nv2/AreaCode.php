@@ -35,10 +35,9 @@ class I18Nv2_AreaCode extends I18Nv2_CommonList
     /**
      * Codes
      *
-     * @access  protected
      * @var     array
      */
-    var $codes = array(
+    protected $codes = array(
         'AF' => 93,
         'AL' => 355,
         'DZ' => 213,
@@ -254,11 +253,10 @@ class I18Nv2_AreaCode extends I18Nv2_CommonList
      *
      * Does nothing.
      *
-     * @access  public
      * @return  bool true
      * @param   string  $lang
      */
-    function loadLanguage($lang)
+    protected function loadLanguage($lang)
     {
         return true;
     }
@@ -266,11 +264,10 @@ class I18Nv2_AreaCode extends I18Nv2_CommonList
     /**
      * Change Key Case
      *
-     * @access  protected
      * @return  string
      * @param   string  $key
      */
-    function changeKeyCase($key)
+    protected function changeKeyCase($key)
     {
         return strToUpper($key);
     }
@@ -281,11 +278,10 @@ class I18Nv2_AreaCode extends I18Nv2_CommonList
      * Merge this list with an I18Nv2_Country list to a new I18Nv2_CommonList,
      * where the international area codes map to the full country name.
      *
-     * @access  public
      * @return  object  I18Nv2_CommonList
      * @param   object  $country I18Nv2_Country
      */
-    function &mergeCountry(&$country)
+    public function &mergeCountry(&$country)
     {
         $list  = new I18Nv2_CommonList(
             $country->getLanguage(),
@@ -307,4 +303,3 @@ class I18Nv2_AreaCode extends I18Nv2_CommonList
     }
 
 }
-?>

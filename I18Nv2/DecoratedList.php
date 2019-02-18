@@ -35,18 +35,16 @@ class I18Nv2_DecoratedList
     /**
      * I18Nv2_(Common|Decorated)List
      *
-     * @access  protected
      * @var     object
      */
-    var $list = null;
+    protected $list = null;
 
     /**
      * Constructor
      *
-     * @access  public
      * @param   object  $list   I18Nv2_DecoratedList or I18Nv2_CommonList
      */
-    function I18Nv2_DecoratedList(&$list)
+    public function __construct(&$list)
     {
         if (is_a($list, 'I18Nv2_CommonList') ||
             is_a($list, 'I18Nv2_DecoratedList')) {
@@ -57,10 +55,9 @@ class I18Nv2_DecoratedList
     /**
      * Get all codes
      *
-     * @access  public
      * @return  array
      */
-    function getAllCodes()
+    public function getAllCodes()
     {
         return $this->decorate($this->list->getAllCodes());
     }
@@ -68,23 +65,21 @@ class I18Nv2_DecoratedList
     /**
      * Check if code is valid
      *
-     * @access  public
      * @return  bool
      * @param   string  $code
      */
-    function isValidCode($code)
+    public function isValidCode($code)
     {
         return $this->decorate($this->list->isValidCode($code));
     }
 
     /**
      * Get name for code
-     *
-     * @access  public
+
      * @return  string
      * @param   string  $code
      */
-    function getName($code)
+    public function getName($code)
     {
         return $this->decorate($this->list->getName($code));
     }
@@ -93,11 +88,10 @@ class I18Nv2_DecoratedList
      * Decorate
      *
      * @abstract
-     * @access  protected
      * @return  mixed
      * @param   mixed   $value
      */
-    function decorate($value)
+    protected function decorate($value)
     {
         return $value;
     }
@@ -105,11 +99,10 @@ class I18Nv2_DecoratedList
     /**
      * Decorate this list
      *
-     * @access  public
      * @return  object  I18NV2_DecoratedList
      * @param   string  $type
      */
-    function &toDecoratedList($type)
+    public function &toDecoratedList($type)
     {
         $decoratedList = 'I18Nv2_DecoratedList_' . $type;
         $obj = new $decoratedList($this);
@@ -119,11 +112,10 @@ class I18Nv2_DecoratedList
     /**
      * Change Key Case
      *
-     * @access  protected
      * @return  string
      * @param   string  $code
      */
-    function changeKeyCase($code)
+    protected function changeKeyCase($code)
     {
         return $this->list->changeKeyCase($code);
     }
@@ -134,11 +126,10 @@ class I18Nv2_DecoratedList
      * Note that each time you set a different language the corresponding
      * language file has to be loaded again, too.
      *
-     * @access  public
      * @return  bool
      * @param   string  $language
      */
-    function setLanguage($language)
+    public function setLanguage($language)
     {
         return $this->list->setLanguage($language);
     }
@@ -146,22 +137,20 @@ class I18Nv2_DecoratedList
     /**
      * Get current language
      *
-     * @access  public
      * @return  string
      */
-    function getLanguage()
+    public function getLanguage()
     {
         return $this->list->getLanguage();
     }
 
     /**
      * Set active encoding
-     *
-     * @access  public
+
      * @return  bool
      * @param   string  $encoding
      */
-    function setEncoding($encoding)
+    public function setEncoding($encoding)
     {
         return $this->list->setEncoding($encoding);
     }
@@ -169,12 +158,10 @@ class I18Nv2_DecoratedList
     /**
      * Get current encoding
      *
-     * @access  public
      * @return  string
      */
-    function getEncoding()
+    public function getEncoding()
     {
         return $this->list->getEncoding();
     }
 }
-?>

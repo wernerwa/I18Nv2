@@ -17,21 +17,17 @@ class I18Nv2_LocaleTest extends PHPUnit_Framework_TestCase
 
     /**
     * Called before the test functions will be executed this function is defined in PHPUnit_TestCase and overwritten here
-    * 
-    * @access protected 
     */
-    function setUp()
+    protected function setUp()
     {
-        $this->l = &new I18Nv2_Locale($GLOBALS['____locale']);
+        $this->l = new I18Nv2_Locale($GLOBALS['____locale']);
         $this->t = time();
     }
 
     /**
     * Called after the test functions are executed this function is defined in PHPUnit_TestCase and overwritten here
-    * 
-    * @access protected 
     */
-    function tearDown()
+    protected function tearDown()
     {
         unset($this->l);
         $this->l = null;
@@ -39,60 +35,48 @@ class I18Nv2_LocaleTest extends PHPUnit_Framework_TestCase
 
     /**
     * Regression test for I18Nv2_Locale.setLocale method
-    * 
-    * @access public 
     */
-    function testsetLocale()
+    public function testsetLocale()
     {
         $this->assertTrue($this->l->setLocale($GLOBALS['____locale']));
     }
 
     /**
     * Regression test for I18Nv2_Locale.setCurrencyFormat method
-    * 
-    * @access public 
     */
-    function testsetCurrencyFormat()
+    public function testsetCurrencyFormat()
     {
         $this->assertFalse(PEAR::isError($this->l->setCurrencyFormat(I18Nv2_CURRENCY_LOCAL)));
     }
 
     /**
     * Regression test for I18Nv2_Locale.setNumberFormat method
-    * 
-    * @access public 
     */
-    function testsetNumberFormat()
+    public function testsetNumberFormat()
     {
         $this->assertFalse(PEAR::isError($this->l->setNumberFormat(I18Nv2_NUMBER_FLOAT)));
     }
 
     /**
     * Regression test for I18Nv2_Locale.setDateFormat method
-    * 
-    * @access public 
     */
-    function testsetDateFormat()
+    public function testsetDateFormat()
     {
         $this->assertFalse(PEAR::isError($this->l->setDateFormat(I18Nv2_DATETIME_FULL)));
     }
 
     /**
     * Regression test for I18Nv2_Locale.setTimeFormat method
-    * 
-    * @access public 
     */
-    function testsetTimeFormat()
+    public function testsetTimeFormat()
     {
         $this->assertFalse(PEAR::isError($this->l->setTimeFormat(I18Nv2_DATETIME_FULL)));
     }
 
     /**
     * Regression test for I18Nv2_Locale.setCustomFormat method
-    * 
-    * @access public 
     */
-    function testsetCustomFormat()
+    public function testsetCustomFormat()
     {
         $tf = '%d. %B %Y';
         $this->l->setCustomFormat(I18Nv2_DATETIME_DEFAULT, $tf);
@@ -103,10 +87,8 @@ class I18Nv2_LocaleTest extends PHPUnit_Framework_TestCase
 
     /**
     * Regression test for I18Nv2_Locale.formatCurrency method
-    * 
-    * @access public 
     */
-    function testformatCurrency()
+    public function testformatCurrency()
     {
         $this->l->setLocale('de_AT');
         $this->assertEquals('EUR 2.000,00', $this->l->formatCurrency(2000));
@@ -115,60 +97,48 @@ class I18Nv2_LocaleTest extends PHPUnit_Framework_TestCase
 
     /**
     * Regression test for I18Nv2_Locale.formatNumber method
-    * 
-    * @access public 
     */
-    function testformatNumber()
+    public function testformatNumber()
     {
         $this->assertEquals('2.13', $this->l->formatNumber(2.1331994));
     }
 
     /**
     * Regression test for I18Nv2_Locale.formatDate method
-    * 
-    * @access public 
     */
-    function testformatDate()
+    public function testformatDate()
     {
         $this->assertEquals(strftime('%d-%b-%Y', $this->t), $this->l->formatDate($this->t));
     }
 
     /**
     * Regression test for I18Nv2_Locale.formatTime method
-    * 
-    * @access public 
     */
-    function testformatTime()
+    public function testformatTime()
     {
         $this->assertEquals(strftime('%H:%M:%S', $this->t), $this->l->formatTime($this->t));
     }
 
     /**
     * Regression test for I18Nv2_Locale.time method
-    * 
-    * @access public 
     */
-    function testtime()
+    public function testtime()
     {
         $this->assertEquals(strftime('%X', $this->t), $this->l->time($this->t));
     }
 
     /**
     * Regression test for I18Nv2_Locale.date method
-    * 
-    * @access public 
     */
-    function testdate()
+    public function testdate()
     {
         $this->assertEquals(strftime('%x', $this->t), $this->l->date($this->t));
     }
 
     /**
     * Regression test for I18Nv2_Locale.dayName method
-    * 
-    * @access public 
     */
-    function testdayName()
+    public function testdayName()
     {
         $dayNum = strftime('%w', $this->t);
         $this->assertEquals(strftime('%A', $this->t), $this->l->dayName($dayNum));
@@ -177,14 +147,11 @@ class I18Nv2_LocaleTest extends PHPUnit_Framework_TestCase
 
     /**
     * Regression test for I18Nv2_Locale.monthName method
-    * 
-    * @access public 
     */
-    function testmonthName()
+    public function testmonthName()
     {
         $monthNum = strftime('%m', $this->t) -1;
         $this->assertEquals(strftime('%B', $this->t), $this->l->monthName($monthNum));
         $this->assertEquals(strftime('%b', $this->t), $this->l->monthName($monthNum, true));
     }
 }
-?>

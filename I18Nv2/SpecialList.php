@@ -33,22 +33,19 @@ class I18Nv2_SpecialList extends I18Nv2_CommonList
     /**
      * Key
      *
-     * @access  protected
      * @var     string
      */
-    var $key = '';
+    protected $key = '';
 
     /**
      * Constructor
      *
-     * @access  public
      * @param   string  $language
      * @param   string  $encoding
      */
-    function I18Nv2_SpecialList($key, $language = null, $encoding = null)
+    public function __construct($key, $language = null, $encoding = null)
     {
         $this->key = $this->changeKeyCase($key);
         parent::I18Nv2_CommonList($language, $encoding);
     }
 }
-?>

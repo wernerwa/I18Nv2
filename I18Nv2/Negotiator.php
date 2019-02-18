@@ -40,73 +40,64 @@ class I18Nv2_Negotiator
      * I18Nv2_Language
      *
      * @var     object
-     * @access  public
      */
-    var $I18NLang = null;
+    public $I18NLang = null;
 
     /**
      * I18Nv2_Country
      *
      * @var     object
-     * @access  public
      */
-    var $I18NCountry = null;
+    public $I18NCountry = null;
 
     /**
      * Save default country code.
      *
      * @var     string
-     * @access  private
      */
-    var $_defaultCountry;
+    private $_defaultCountry;
 
     /**
      * Save default language code.
      *
      * @var     string
-     * @access  private
      */
-    var $_defaultLanguage;
+    private $_defaultLanguage;
 
     /**
      * Save default encoding code.
      *
      * @var     string
-     * @access  private
      */
-    var $_defaultEncoding;
+    private $_defaultEncoding;
 
     /**
      * HTTP_ACCEPT_CHARSET
      *
      * @var     array
-     * @access  private
      */
-    var $_acceptEncoding = array();
+    public $_acceptEncoding = array();
 
     /**
      * HTTP_ACCEPT_LANGUAGE
      *
      * @var     array
-     * @access  private
      */
-    var $_acceptLanguage = array();
+    private $_acceptLanguage = array();
 
     /**
      * Language variations
      *
      * @var     array
-     * @access  private
      */
-    var $_langVariation = array();
+    private $_langVariation = array();
 
     /**
      * Countries
      *
      * @var     array
-     * @access  private
      */
-    var $_country = array();
+    private $_country = array();
 
     /**
      * Constructor
@@ -141,10 +132,9 @@ class I18Nv2_Negotiator
     /**
      * Negotiate Language
      *
-     * @access  private
      * @return  void
      */
-    function _negotiateLanguage()
+    private function _negotiateLanguage()
     {
         if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             return;
@@ -180,10 +170,9 @@ class I18Nv2_Negotiator
     /**
      * Negotiate Encoding
      *
-     * @access  private
      * @return  void
      */
-    function _negotiateEncoding()
+    private function _negotiateEncoding()
     {
         if (!isset($_SERVER['HTTP_ACCEPT_CHARSET'])) {
             return;
@@ -198,12 +187,11 @@ class I18Nv2_Negotiator
     /**
      * Find Country Match
      *
-     * @access  public
      * @return  array
      * @param   string  $lang
      * @param   array   $countries
      */
-    function getCountryMatch($lang, $countries = null)
+    public function getCountryMatch($lang, $countries = null)
     {
         return $this->_getMatch(
             $countries,
@@ -215,11 +203,10 @@ class I18Nv2_Negotiator
     /**
      * Return variant info for passed parameter.
      *
-     * @access  public
      * @return  string
      * @param   string  $lang
      */
-    function getVariantInfo($lang)
+    public function getVariantInfo($lang)
     {
         return isset($this->_langVariation[$lang]) ? $this->_langVariation[$lang] : null;
     }
@@ -228,11 +215,10 @@ class I18Nv2_Negotiator
      * Find Encoding match
      *
      * @deprecated
-     * @access  public
      * @return  string
      * @param   array   $encodings
      */
-    function getCharsetMatch($encodings = null)
+    public function getCharsetMatch($encodings = null)
     {
         return $this->_getMatch(
             $encodings,
@@ -244,11 +230,10 @@ class I18Nv2_Negotiator
     /**
      * Find Encoding match
      *
-     * @access  public
      * @return  string
      * @param   array   $encodings
      */
-    function getEncodingMatch($encodings = null)
+    public function getEncodingMatch($encodings = null)
     {
         return $this->_getMatch(
             $encodings,
@@ -260,11 +245,10 @@ class I18Nv2_Negotiator
     /**
      * Find Language match
      *
-     * @access  public
      * @return  string
      * @param   array   $langs
      */
-    function getLanguageMatch($langs = null)
+    public function getLanguageMatch($langs = null)
     {
         return $this->_getMatch(
             $langs,
@@ -276,12 +260,11 @@ class I18Nv2_Negotiator
     /**
      * Find locale match
      *
-     * @access  public
      * @return  string
      * @param   array   $langs
      * @param   array   $countries
      */
-    function getLocaleMatch($langs = null, $countries = null)
+    public function getLocaleMatch($langs = null, $countries = null)
     {
         $lang = $this->_getMatch($langs, $this->_acceptLanguage, $this->_defaultLanguage);
         $ctry = $this->_getMatch($countries, @$this->_country[$lang], $this->_defaultCountry);
@@ -292,13 +275,12 @@ class I18Nv2_Negotiator
      * Return first matched value from first and second parameter.
      * If there is no match found, then return third parameter.
      *
-     * @access  private
      * @return  string
      * @param   array   $needle
      * @param   array   $haystack
      * @param   string  $default
      */
-    function _getMatch($needle, $haystack, $default = '')
+    private function _getMatch($needle, $haystack, $default = '')
     {
         if (!$haystack) {
             return $default;
@@ -315,24 +297,22 @@ class I18Nv2_Negotiator
     /**
      * Find Country name for country code passed
      *
-     * @access  private
      * @return  void
      * @param   string  $code   country code
      */
-    function getCountryName($code)
+    public function getCountryName($code)
     {
         $this->singleI18NCountry();
         return $this->I18NCountry->getName($code);
     }
 
     /**
-     * Find Country name for country code passed
+     * Find Language name for country code passed
      *
-     * @access  private
      * @return  void
      * @param   string      $code   language code
      */
-    function getLanguageName($code)
+    public function getLanguageName($code)
     {
         $this->singleI18NLanguage();
         return $this->I18NLang->getName($code);
@@ -341,10 +321,9 @@ class I18Nv2_Negotiator
     /**
      * Create the Language helper object
      *
-     * @access  public
      * @return  object
      */
-    function &singleI18NLanguage()
+    public function &singleI18NLanguage()
     {
         if (!isset($this->I18NLang)) {
             include_once 'I18Nv2/Language.php';
@@ -359,10 +338,9 @@ class I18Nv2_Negotiator
     /**
      * Create the Country helper object
      *
-     * @access  public
      * @return  object
      */
-    function &singleI18NCountry()
+    public function &singleI18NCountry()
     {
         if (!isset($this->I18NCountry)) {
             include_once 'I18Nv2/Country.php';
@@ -374,4 +352,3 @@ class I18Nv2_Negotiator
         return $this->I18NCountry;
     }
 }
-?>

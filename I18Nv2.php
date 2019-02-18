@@ -41,13 +41,11 @@ class I18Nv2
      * I18Nv2::setLocale('en_GB');
      * </code>
      *
-     * @static
-     * @access  public
      * @return  mixed   &type.string; used locale or false on failure
      * @param   string  $locale     a valid locale like en_US or de_DE
      * @param   int     $cat        the locale category - usually LC_ALL
      */
-    function setLocale($locale = null, $cat = LC_ALL)
+    public static function setLocale($locale = null, $cat = LC_ALL)
     {
         if (!strlen($locale)) {
             return setLocale($cat, null);
@@ -119,13 +117,11 @@ class I18Nv2
     /**
      * Get current/prior Locale
      *
-     * @static
-     * @access  public
      * @return  mixed   last locale as string or array
      * @param   int     $prior  if 0, the current otherwise n prior to current
      * @param   bool    $part   true|all|0=locale|1=language|2=syslocale
      */
-    function lastLocale($prior = 0, $part = 0)
+    public static function lastLocale($prior = 0, $part = 0)
     {
         $last = I18Nv2::getStaticProperty('last');
         if (!isset($last)) {
@@ -151,12 +147,10 @@ class I18Nv2
      * $point  = I18Nv2::getInfo('decimal_point');
      * </code>
      *
-     * @static
-     * @access  public
      * @return  mixed
      * @param   string  $part
      */
-    function getInfo($part = null)
+    public static function getInfo($part = null)
     {
         $info = &I18Nv2::getStaticProperty('info');
         return isset($part, $info[$part]) ? $info[$part] : $info;
@@ -165,13 +159,11 @@ class I18Nv2
     /**
      * Create a Locale object
      *
-     * @static
-     * @access  public
      * @return  object  I18Nv2_Locale
      * @param   string  $locale     The locale to use.
      * @param   bool    $paranoid   Whether to operate in paranoid mode.
      */
-    function &createLocale($locale = null, $paranoid = false)
+    public static function &createLocale($locale = null, $paranoid = false)
     {
         $obj  = new I18Nv2_Locale($locale, $paranoid);
         return $obj;
@@ -180,14 +172,12 @@ class I18Nv2
     /**
      * Create a Negotiator object
      *
-     * @static
-     * @access  public
      * @return  object  I18Nv2_Negotiator
      * @param   string  $defLang        default language
      * @param   string  $defEnc         default encoding
      * @param   string  $defCtry        default country
      */
-    function &createNegotiator($defLang = 'en', $defEnc = 'iso-8859-1', $defCtry = '')
+    public static function &createNegotiator($defLang = 'en', $defEnc = 'iso-8859-1', $defCtry = '')
     {
         $obj  = new I18Nv2_Negotiator($defLang, $defEnc, $defCtry);
         return $obj;
@@ -209,8 +199,6 @@ class I18Nv2
      * // ...
      * </code>
      *
-     * @static
-     * @access  public
      * @return  mixed   Returns &true; on success or
      *                  <classname>PEAR_Error</classname> on failure.
      * @param   string  $oe             desired output encoding
@@ -223,7 +211,7 @@ class I18Nv2
      *                                  the fetched data be passed through
      *                                  ob_iconvhandler
      */
-    function autoConv($oe = 'UTF-8', $ie = 'ISO-8859-1', $decodeRequest = true, $refetchOB = true)
+    public static function autoConv($oe = 'UTF-8', $ie = 'ISO-8859-1', $decodeRequest = true, $refetchOB = true)
     {
         if (!strcasecmp($oe, $ie)) {
             return true;
@@ -265,14 +253,12 @@ class I18Nv2
     /**
      * Recursive Iconv
      *
-     * @static
-     * @access  public
      * @return  void
      * @param   array   $value
      * @param   string  $from
      * @param   string  $to
      */
-    function recursiveIconv(&$value, $from, $to)
+    public static function recursiveIconv(&$value, $from, $to)
     {
         foreach ($value as $key => $val) {
             if (is_array($val)) {
@@ -288,12 +274,10 @@ class I18Nv2
      *
      * Returns en-US, de-DE from en_US and de_DE
      *
-     * @static
-     * @access  public
      * @return  array
      * @param   array   $locales
      */
-    function locales2langs($locales)
+    public static function locales2langs($locales)
     {
         return array_map(array('I18Nv2','l2l'), (array) $locales);
     }
@@ -303,12 +287,10 @@ class I18Nv2
      *
      * Returns en_US, de_DE from en-US and de-DE
      *
-     * @static
-     * @access  public
      * @return  array
      * @param   array   $languages
      */
-    function langs2locales($languages)
+    public static function langs2locales($languages)
     {
         return array_map(array('I18Nv2','l2l'), (array) $languages);
     }
@@ -316,12 +298,10 @@ class I18Nv2
     /**
      * Locale to language or language to locale
      *
-     * @static
-     * @access  public
      * @return  string
      * @param   string  $localeOrLanguage
      */
-    function l2l($localeOrLanguage)
+    public static function l2l($localeOrLanguage)
     {
         return strtr($localeOrLanguage, '-_', '_-');
     }
@@ -331,12 +311,10 @@ class I18Nv2
      *
      * Splits locale codes into its language and country part
      *
-     * @static
-     * @access  public
      * @return  array
      * @param   string  $locale
      */
-    function splitLocale($locale)
+    public static function splitLocale($locale)
     {
         @list($l, $c) = preg_split('/[_-]/', $locale, 2, PREG_SPLIT_NO_EMPTY);
         return array($l, $c);
@@ -345,12 +323,10 @@ class I18Nv2
     /**
      * Get language code of locale
      *
-     * @static
-     * @access  public
      * @return  string
      * @patram  string  $locale
      */
-    function languageOf($locale)
+    public static function languageOf($locale)
     {
         return current($a = I18Nv2::splitLocale($locale));
     }
@@ -358,12 +334,10 @@ class I18Nv2
     /**
      * Get country code of locale
      *
-     * @static
-     * @access  public
      * @return  string
      * @param   string  $locale
      */
-    function countryOf($locale)
+    public static function countryOf($locale)
     {
         return end($a = I18Nv2::splitLocale($locale));
     }
@@ -371,12 +345,10 @@ class I18Nv2
     /**
      * Get access to static property
      *
-     * @static
-     * @access  public
      * @return  mixed   Returns a reference to a static property
      * @param   string  $property   the static property
      */
-    function &getStaticProperty($property)
+    public static function &getStaticProperty($property)
     {
         static $properties;
         return $properties[$property];
@@ -386,12 +358,11 @@ class I18Nv2
      * This one gets called automatically
      *
      * @ignore
-     * @static
      * @internal
      * @access  private
      * @return  void
      */
-    function _main()
+    public static function _main()
     {
         // initialize the locale stack
         $last = &I18Nv2::getStaticProperty('last');
@@ -437,5 +408,3 @@ class I18Nv2
 }
 
 I18Nv2::_main();
-
-?>

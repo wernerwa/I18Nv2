@@ -15,7 +15,7 @@
 
 /**
  * I18Nv2::Timezone
- * 
+ *
  * @package     I18Nv2
  * @category    Internationalization
  */
@@ -24,7 +24,7 @@
  * I18Nv2_Timezone
  *
  * Map of country codes to time zone names.
- * 
+ *
  * Note that:
  * AX is not in country list
  * CS is not in country list
@@ -32,7 +32,7 @@
  * HM (Heard Island And Mcdonald Islands) is not in time zones list
  * SP (Serbia) is not in time zones list
  * YU (Serbia And Montenegro) is not in time zones list
- * 
+ *
  * @author      Michael Wallner <mike@php.net>
  * @version     $Revision$
  * @package     I18Nv2
@@ -43,65 +43,57 @@ class I18Nv2_Timezone
 {
     /**
      * For Country
-     * 
-     * @static
-     * @access  public
+     *
      * @return  array   time zones applicable for the country
      * @param   string  $country ISO country code
      */
-    function forCountry($country)
+    public static function forCountry($country)
     {
         $country = strToUpper($country);
         return isset($GLOBALS['_I18Nv2_Timezones'][$country]) ?
             $GLOBALS['_I18Nv2_Timezones'][$country] : array();
     }
-    
+
     /**
      * For Continent
-     * 
-     * @static
-     * @access  public
+     *
      * @return  array   time zones applicable for the "continent"
      * @param   string  $continent  Europe|America|Africa|Asia|Pacific|Australia|
      *                              Indian|Atlantic|Antartica
      */
-    function forContinent($continent)
+    public static function forContinent($continent)
     {
         $continent = ucFirst(strToLower($continent));
-        
+
         if (!count($GLOBALS['_I18Nv2_Continental_Timezones'])) {
             foreach (I18Nv2_Timezone::getAll(true) as $tz) {
                 $cn = current($a = explode('/', $tz, 2));
                 $GLOBALS['_I18Nv2_Continental_Timeszones'][$cn][] = $tz;
             }
         }
-        
+
         return isset($GLOBALS['_I18Nv2_Continental_Timeszones'][$continent]) ?
             $GLOBALS['_I18Nv2_Continental_Timeszones'][$continent] : array();
     }
-    
+
     /**
      * Exists
-     * 
-     * @static
-     * @access  public
+     *
      * @return  bool
      * @param   string  $timezone
      */
-    function exists($timezone)
+    public static function exists($timezone)
     {
         return in_array($timezone, I18Nv2_Timezone::getAll(true));
     }
-    
+
     /**
      * Get All
-     * 
-     * @static
-     * @access  public
+     *
      * @return  array
      * @param   bool    $merged
      */
-    function getAll($merged = false)
+    public static function getAll($merged = false)
     {
         if ($merged) {
             if (!count($GLOBALS['_I18Nv2_Merged_Timezones'])) {
@@ -112,7 +104,7 @@ class I18Nv2_Timezone
         }
         return $GLOBALS['_I18Nv2_Timezones'];
     }
-    
+
 }
 
 $GLOBALS['_I18Nv2_Continental_Timezones'] = array();
@@ -980,5 +972,3 @@ $GLOBALS['_I18Nv2_Timezones'] = array(
         'Africa/Harare',
     ),
 );
-
-?>

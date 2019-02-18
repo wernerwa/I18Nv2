@@ -35,11 +35,10 @@ class I18Nv2_Country extends I18Nv2_CommonList
     /**
      * Load language file
      *
-     * @access  protected
      * @return  bool
      * @param   string  $language
      */
-    function loadLanguage($language)
+    protected function loadLanguage($language)
     {
         return @include 'I18Nv2/Country/' . $language . '.php';
     }
@@ -47,13 +46,11 @@ class I18Nv2_Country extends I18Nv2_CommonList
     /**
      * Change case of code key
      *
-     * @access  protected
      * @return  string
      * @param   string  $code
      */
-    function changeKeyCase($code)
+    protected function changeKeyCase($code)
     {
         return strToUpper($code);
     }
 }
-?>

@@ -36,35 +36,31 @@ class I18Nv2_CommonList
     /**
      * Codes
      *
-     * @access  protected
      * @var     array
      */
-    var $codes = array();
+    protected $codes = array();
 
     /**
      * Language
      *
-     * @access  protected
      * @var     string
      */
-    var $language = '';
+    protected $language = '';
 
     /**
      * Encoding
      *
-     * @access  protected
      * @var     string
      */
-    var $encoding = '';
+    protected $encoding = '';
 
     /**
      * Constructor
      *
-     * @access  public
      * @param   string  $language
      * @param   string  $encoding
      */
-    function I18Nv2_CommonList($language = null, $encoding = null)
+    public function __construct($language = null, $encoding = null)
     {
         if (!$this->setLanguage($language)) {
             if (class_exists('I18Nv2')) {
@@ -87,11 +83,10 @@ class I18Nv2_CommonList
      * Note that each time you set a different language the corresponding
      * language file has to be loaded again, too.
      *
-     * @access  public
      * @return  bool
      * @param   string  $language
      */
-    function setLanguage($language)
+    public function setLanguage($language)
     {
         if (!isset($language)) {
             return false;
@@ -110,10 +105,9 @@ class I18Nv2_CommonList
     /**
      * Get current language
      *
-     * @access  public
      * @return  string
      */
-    function getLanguage()
+    public function getLanguage()
     {
         return $this->language;
     }
@@ -121,11 +115,10 @@ class I18Nv2_CommonList
     /**
      * Set active encoding
      *
-     * @access  public
      * @return  bool
      * @param   string  $encoding
      */
-    function setEncoding($encoding)
+    public function setEncoding($encoding)
     {
         if (!isset($encoding)) {
             return false;
@@ -137,10 +130,9 @@ class I18Nv2_CommonList
     /**
      * Get current encoding
      *
-     * @access  public
      * @return  string
      */
-    function getEncoding()
+    public function getEncoding()
     {
         return $this->encoding;
     }
@@ -148,11 +140,10 @@ class I18Nv2_CommonList
     /**
      * Check if code is valid
      *
-     * @access  public
      * @return  bool
      * @param   string  $code   code
      */
-    function isValidCode($code)
+    public function isValidCode($code)
     {
         return isset($this->codes[$this->changeKeyCase($code)]);
     }
@@ -160,11 +151,10 @@ class I18Nv2_CommonList
     /**
      * Return corresponding name of code
      *
-     * @access  public
      * @return  string  name
      * @param   string  $code   code
      */
-    function getName($code)
+    public function getName($code)
     {
         $code = $this->changeKeyCase($code);
         if (!isset($this->codes[$code])) {
@@ -179,10 +169,9 @@ class I18Nv2_CommonList
     /**
      * Return all the codes
      *
-     * @access  public
      * @return  array   all codes as associative array
      */
-    function getAllCodes()
+    public function getAllCodes()
     {
         if ('UTF-8' !== $this->encoding) {
             $codes = $this->codes;
@@ -193,10 +182,9 @@ class I18Nv2_CommonList
     }
 
     /**
-     * @access  private
      * @return  void
      */
-    function _iconv(&$code, $key)
+    private function _iconv(&$code, $key)
     {
         $code = iconv('UTF-8', $this->encoding .'//TRANSLIT', $code);
     }
@@ -204,11 +192,10 @@ class I18Nv2_CommonList
     /**
      * Load Language
      *
-     * @access  proteceted
      * @return  bool
      * @param   string  $language
      */
-    function loadLanguage($language)
+    protected function loadLanguage($language)
     {
         return false;
     }
@@ -216,11 +203,10 @@ class I18Nv2_CommonList
     /**
      * Change Key Case
      *
-     * @access  protected
      * @return  string
      * @param   string  $code
      */
-    function changeKeyCase($code)
+    protected function changeKeyCase($code)
     {
         return $code;
     }
@@ -228,11 +214,10 @@ class I18Nv2_CommonList
     /**
      * Decorate this list
      *
-     * @access  public
      * @return  object  I18NV2_DecoratedList
      * @param   string  $type
      */
-    function &toDecoratedList($type)
+    public function &toDecoratedList($type)
     {
         $decoratedList = 'I18Nv2_DecoratedList_' . $type;
         $decorator = new $decoratedList($this);

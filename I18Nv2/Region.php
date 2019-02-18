@@ -33,11 +33,10 @@ class I18Nv2_Region extends I18Nv2_SpecialList
     /**
      * Load language file
      *
-     * @access  protected
      * @return  bool
      * @param   string  $language
      */
-    function loadLanguage($language)
+    protected function loadLanguage($language)
     {
         return @include 'I18Nv2/Region/'. $this->key .'/'. $language .'.php';
     }
@@ -45,13 +44,11 @@ class I18Nv2_Region extends I18Nv2_SpecialList
     /**
      * Change case of code key
      *
-     * @access  protected
      * @return  string
      * @param   string  $code
      */
-    function changeKeyCase($code)
+    protected function changeKeyCase($code)
     {
         return strToUpper($code);
     }
 }
-?>
