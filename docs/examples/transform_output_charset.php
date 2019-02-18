@@ -10,10 +10,10 @@
 * $Id$
 */
 
-require_once 'I18Nv2.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 // Writing a shell app that should also display nicely in a DOS box
-if (I18Nv2_WIN) {
+if (I18Nv2::isWindows()) {
     I18Nv2::autoConv('CP850');
 }
 
