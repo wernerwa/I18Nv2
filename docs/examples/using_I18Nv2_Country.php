@@ -5,11 +5,11 @@
 * ====================
 *
 * I18Nv2 provides translated lists of country names.
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2/Country.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 $country = &new I18Nv2_Country('de', 'iso-8859-1');
 

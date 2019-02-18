@@ -33,6 +33,10 @@ define('I18Nv2_WIN', defined('OS_WINDOWS') ? OS_WINDOWS : (strToUpper(substr(PHP
  */
 class I18Nv2
 {
+    public static function isWindows() {
+        return I18Nv2_WIN;
+    }
+
     /**
      * Set Locale
      *
@@ -218,7 +222,6 @@ class I18Nv2
         }
 
         if (!extension_loaded('iconv')) {
-            require_once 'PEAR.php';
             if (!PEAR::loadExtension('iconv')) {
                 return PEAR::raiseError('Error: ext/iconv is not available');
             }
@@ -237,7 +240,6 @@ class I18Nv2
         }
 
         if (!ob_start('ob_iconv_handler')) {
-            require_once 'PEAR.php';
             return PEAR::raiseError('Couldn\'t start output buffering');
         }
         echo $buffer;

@@ -6,11 +6,11 @@
 *
 * I18Nv2 provides decorated classes for country and language lists.
 * There's just another way to use them like in using_I18Nv2_DecoratedList.php
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2/Country.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 $c = &new I18Nv2_Country('it', 'iso-8859-1');
 

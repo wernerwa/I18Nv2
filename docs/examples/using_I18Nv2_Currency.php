@@ -5,11 +5,11 @@
 * =====================
 *
 * I18Nv2 provides translated lists of currency names.
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2/Currency.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 $c = &new I18Nv2_Currency('de', 'iso-8859-1');
 

@@ -6,11 +6,11 @@
 *
 * I18Nv2_Locale is a formatter object that provides functionality to format
 * dates, times, numbers and currencies in locale dependent conventions.
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 $locale = &I18Nv2::createLocale('de_AT');
 

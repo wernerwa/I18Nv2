@@ -21,8 +21,7 @@ ini_set('track_errors', true);
  *  o ext/mbstring
  *  o ext/simplexml
  */
-require_once 'PEAR.php';
-require_once 'Console/Getargs.php';
+require_once dirname(__DIR__).'/vendor/autoload.php';
 
 if (!PEAR::loadExtension('simplexml')) {
     usage('ext/simplexml is required!');

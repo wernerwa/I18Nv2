@@ -5,11 +5,11 @@
 * =====================
 *
 * I18Nv2 provides translated lists of language names.
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2/Language.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 $lang = &new I18Nv2_Language('it', 'iso-8859-1');
 

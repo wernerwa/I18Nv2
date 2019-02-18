@@ -40,8 +40,6 @@ define('I18Nv2_DATETIME_LONG',              'long');
 define('I18Nv2_DATETIME_FULL',              'full');
 /**#@-*/
 
-require_once 'PEAR.php';
-
 /**
  * I18Nv2_Locale
  *

@@ -5,11 +5,11 @@
 * =======================
 *
 * I18Nv2 provides a language, charset and locale negotiator for HTTP.
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2/Negotiator.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'en-US,en-GB,en;q=0.5,de';
 $_SERVER['HTTP_ACCEPT_CHARSET']  = 'utf-8,iso-8859-1;q=0.5';
@@ -27,5 +27,3 @@ echo "User agents preferred locale:                    ",
 
 echo "User agents preferred charset:                   ",
     $neg->getCharsetMatch(), "\n";
-
-?>

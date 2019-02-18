@@ -4,14 +4,14 @@
 * Retrieving locale conventions
 * =============================
 *
-* I18Nv2 holds locale conventions returned by localeConv() stored statically, 
+* I18Nv2 holds locale conventions returned by localeConv() stored statically,
 * so they are easily accessible through I18Nv2::getInfo(). Have a look at
 * the documentation of PHPs localeConv() for all available information.
-* 
+*
 * $Id$
 */
 
-require_once 'I18Nv2.php';
+require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
 I18Nv2::setLocale('fr');
 

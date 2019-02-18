@@ -2,9 +2,7 @@
 
 // some tests may fail with other locales - just see yourself
 $GLOBALS['____locale'] = 'en_US';
-
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'I18Nv2/Locale.php';
+require_once dirname(__DIR__).'/vendor/autoload.php';
 
 PEAR::setErrorHandling(PEAR_ERROR_PRINT, "PEAR_Error: %s\n");
 
