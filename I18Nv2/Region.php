@@ -47,7 +47,7 @@ class I18Nv2_Region extends I18Nv2_SpecialList
      * @return  string
      * @param   string  $code
      */
-    protected function changeKeyCase($code)
+    public function changeKeyCase($code)
     {
         return strToUpper($code);
     }

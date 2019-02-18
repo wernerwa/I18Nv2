@@ -206,7 +206,7 @@ class I18Nv2_CommonList
      * @return  string
      * @param   string  $code
      */
-    protected function changeKeyCase($code)
+    public function changeKeyCase($code)
     {
         return $code;
     }

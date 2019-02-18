@@ -75,7 +75,7 @@ class I18Nv2_DecoratedList
 
     /**
      * Get name for code
-
+     *
      * @return  string
      * @param   string  $code
      */
@@ -115,7 +115,7 @@ class I18Nv2_DecoratedList
      * @return  string
      * @param   string  $code
      */
-    protected function changeKeyCase($code)
+    public function changeKeyCase($code)
     {
         return $this->list->changeKeyCase($code);
     }
@@ -146,7 +146,7 @@ class I18Nv2_DecoratedList
 
     /**
      * Set active encoding
-
+     *
      * @return  bool
      * @param   string  $encoding
      */

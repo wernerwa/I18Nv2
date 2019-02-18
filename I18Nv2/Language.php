@@ -49,7 +49,7 @@ class I18Nv2_Language extends I18Nv2_CommonList
      * @return  string
      * @param   string  $code
      */
-    protected function changeKeyCase($code)
+    public function changeKeyCase($code)
     {
         return strToLower($code);
     }

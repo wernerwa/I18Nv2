@@ -37,29 +37,26 @@ class I18Nv2_DecoratedList_Filter extends I18Nv2_DecoratedList
      *
      * exclude|include resp. false|true
      *
-     * @access  public
      * @var     mixed
      */
-    var $filter = 'include';
+    public $filter = 'include';
 
     /**
      * Elements
      *
      * Keys that should be filtered
      *
-     * @access  public
      * @var     array
      */
-    var $elements = array();
+    public $elements = array();
 
     /**
      * decorate
      *
-     * @access  protected
      * @return  mixed
      * @param   mixed   $value
      */
-    function decorate($value)
+    protected function decorate($value)
     {
         if (is_array($value)) {
             $result = array();
@@ -92,4 +89,3 @@ class I18Nv2_DecoratedList_Filter extends I18Nv2_DecoratedList
         return $value;
     }
 }
-?>

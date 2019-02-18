@@ -267,7 +267,7 @@ class I18Nv2_AreaCode extends I18Nv2_CommonList
      * @return  string
      * @param   string  $key
      */
-    protected function changeKeyCase($key)
+    public function changeKeyCase($key)
     {
         return strToUpper($key);
     }
