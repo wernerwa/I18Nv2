@@ -11,7 +11,7 @@
 
 require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
-$lang = &new I18Nv2_Language('it', 'iso-8859-1');
+$lang = new I18Nv2_Language('it', 'iso-8859-1');
 
 echo "Italian name for English: ",
     $lang->getName('en'), "\n";

@@ -11,7 +11,7 @@
 
 require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
-$c = &new I18Nv2_Currency('de', 'iso-8859-1');
+$c = new I18Nv2_Currency('de', 'iso-8859-1');
 
 echo "German name for US Dollars:      ",
     $c->getName('usd'), "\n";

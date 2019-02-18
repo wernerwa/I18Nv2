@@ -12,7 +12,7 @@
 
 require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
-$c = &new I18Nv2_Country('it', 'iso-8859-1');
+$c = new I18Nv2_Country('it', 'iso-8859-1');
 
 // Filter
 $f = &$c->toDecoratedList('Filter');

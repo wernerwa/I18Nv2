@@ -14,7 +14,7 @@ require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'en-US,en-GB,en;q=0.5,de';
 $_SERVER['HTTP_ACCEPT_CHARSET']  = 'utf-8,iso-8859-1;q=0.5';
 
-$neg = &new I18Nv2_Negotiator;
+$neg = new I18Nv2_Negotiator;
 
 echo "User agents preferred language:                  ",
     $lang = $neg->getLanguageMatch(), "\n";

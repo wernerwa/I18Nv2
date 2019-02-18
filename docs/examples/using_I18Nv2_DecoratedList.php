@@ -11,9 +11,9 @@
 
 require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
-$c = &new I18Nv2_Country('it', 'iso-8859-1');
-$e = &new I18Nv2_DecoratedList_HtmlEntities($c);
-$s = &new I18Nv2_DecoratedList_HtmlSelect($e);
+$c = new I18Nv2_Country('it', 'iso-8859-1');
+$e = new I18Nv2_DecoratedList_HtmlEntities($c);
+$s = new I18Nv2_DecoratedList_HtmlSelect($e);
 
 // set some attributes
 $s->attributes['select']['name'] = 'CountrySelect';

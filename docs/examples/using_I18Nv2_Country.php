@@ -11,7 +11,7 @@
 
 require_once dirname(dirname(__DIR__)).'/vendor/autoload.php';
 
-$country = &new I18Nv2_Country('de', 'iso-8859-1');
+$country = new I18Nv2_Country('de', 'iso-8859-1');
 
 echo "German name for United States: ",
     $country->getName('us'), "\n";

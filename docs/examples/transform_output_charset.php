@@ -6,7 +6,7 @@
 *
 * I18Nv2 provides an easy way to utilize the ob_iconv_handler() through
 * I18Nv2::autoConv($output_charset, $input_charset).
-* 
+*
 * $Id$
 */
 
