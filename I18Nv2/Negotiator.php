@@ -105,21 +105,11 @@ class I18Nv2_Negotiator
      * Find language code, country code, encoding code, and dialect or variant
      * of Locale setting in HTTP request headers.
      *
-     * @access  public
      * @param   string  $defaultLanguage    Default Language
      * @param   string  $defaultEncoding    Default Encoding
      * @param   string  $defaultCountry     Default Country
      */
-    function I18Nv2_Negotiator($defaultLanguage = 'en', $defaultEncoding = 'iso-8859-1', $defaultCountry = '')
-    {
-        $this->__construct($defaultLanguage, $defaultEncoding, $defaultCountry);
-    }
-
-    /**
-     * ZE2 Constructor
-     * @ignore
-     */
-    function __construct($defaultLanguage = 'en', $defaultEncoding = 'iso-8859-1', $defaultCountry = '')
+    public function __construct($defaultLanguage = 'en', $defaultEncoding = 'iso-8859-1', $defaultCountry = '')
     {
         $this->_defaultCountry  = $defaultCountry;
         $this->_defaultLanguage = $defaultLanguage;
