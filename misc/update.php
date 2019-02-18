@@ -7,11 +7,6 @@
  * $Id$
  */
 
-/**
- * Track Errors
- */
-ini_set('track_errors', true);
-
 /**#@+
  * Requires:
  *  o PHP5
