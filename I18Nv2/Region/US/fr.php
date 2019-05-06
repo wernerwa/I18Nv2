@@ -17,9 +17,9 @@ $this->codes = array(
 
     'FL' => 'Floride',
 
-    'GA' => 'Géorgie',
+    'GA' => 'GÃ©orgie',
 
-    'HI' => 'Hawaï',
+    'HI' => 'HawaÃ¯',
 
     'ID' => 'Idaho',
     'IL' => 'Illinois',
@@ -44,7 +44,7 @@ $this->codes = array(
     'NV' => 'Nevada',
     'NH' => 'New Hampshire',
     'NJ' => 'New Jersey',
-    'NM' => 'Nouveau-Méxique',
+    'NM' => 'Nouveau-MÃ©xique',
     'NY' => 'New York',
     'NC' => 'Caroline du Nord',
     'ND' => 'Dakota du Nord',

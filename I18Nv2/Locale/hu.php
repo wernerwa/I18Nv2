@@ -15,7 +15,7 @@ $this->timeFormats = array(
     I18Nv2_DATETIME_DEFAULT   =>  '%H:%M:%S',
     I18Nv2_DATETIME_MEDIUM    =>  '%H:%M:%S',
     I18Nv2_DATETIME_LONG      =>  '%H:%M:%S %Z',
-    I18Nv2_DATETIME_FULL      =>  'idõ: %H:%M %Z'
+    I18Nv2_DATETIME_FULL      =>  'idÅ‘: %H:%M %Z'
 );
 $this->currencyFormats[I18Nv2_CURRENCY_LOCAL][0] = 'Ft';
 $this->currencyFormats[I18Nv2_CURRENCY_LOCAL][1] = '2';

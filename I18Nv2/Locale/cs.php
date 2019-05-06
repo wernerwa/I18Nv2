@@ -19,7 +19,7 @@ $this->timeFormats = array(
     I18Nv2_DATETIME_FULL      =>  '%H:%M hod. %Z'
 );
 
-$this->currencyFormats[I18Nv2_CURRENCY_LOCAL][0] = 'Kè';
+$this->currencyFormats[I18Nv2_CURRENCY_LOCAL][0] = 'KÄ';
 $this->currencyFormats[I18Nv2_CURRENCY_LOCAL][1] = '2';
 $this->currencyFormats[I18Nv2_CURRENCY_LOCAL][2] = ',';
 $this->currencyFormats[I18Nv2_CURRENCY_LOCAL][3] = '.';
