@@ -38,7 +38,7 @@ class I18Nv2_Currency extends I18Nv2_CommonList
      */
     protected function loadLanguage($language)
     {
-        return @include 'I18Nv2/Currency/' . $language . '.php';
+        return @include __DIR__.'/Currency/' . $language . '.php';
     }
 
     /**

@@ -3,5 +3,4 @@
 * $Id$
 */
 
-include 'I18Nv2/Locale/EUR.php';
-?>
+include __DIR__.'/EUR.php';

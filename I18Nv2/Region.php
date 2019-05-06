@@ -38,7 +38,7 @@ class I18Nv2_Region extends I18Nv2_SpecialList
      */
     protected function loadLanguage($language)
     {
-        return @include 'I18Nv2/Region/'. $this->key .'/'. $language .'.php';
+        return @include __DIR__.'/Region/'. $this->key .'/'. $language .'.php';
     }
 
     /**

@@ -40,7 +40,7 @@ class I18Nv2_Language extends I18Nv2_CommonList
      */
     protected function loadLanguage($language)
     {
-        return @include 'I18Nv2/Language/' . $language . '.php';
+        return @include __DIR__.'/Language/' . $language . '.php';
     }
 
     /**
