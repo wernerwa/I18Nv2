@@ -17,5 +17,3 @@ $this->codes = array(
     'SK' => 'Saskatchewan',
     'YK' => 'Yukon Territory'
 );
-
-?>

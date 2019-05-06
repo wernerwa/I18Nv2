@@ -108,5 +108,3 @@ $this->codes = array(
     '987' => 'Polynésie Française',
     '988' => 'Nouvelle Calédonie'
 );
-
-?>

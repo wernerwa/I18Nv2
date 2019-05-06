@@ -84,5 +84,3 @@ $windows = array(
     
     'cs_CZ' => 'csy',
 );
-
-?>

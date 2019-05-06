@@ -17,4 +17,3 @@ $this->timeFormats = array(
     I18Nv2_DATETIME_LONG      =>  '%H:%M:%S %Z',
     I18Nv2_DATETIME_FULL      =>  '%H:%M %Z'
 );
-?>

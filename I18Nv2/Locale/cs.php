@@ -28,4 +28,3 @@ $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL][1] = '2';
 $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL][2] = '.';
 $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL][3] = ',';
 
-?>

@@ -72,5 +72,3 @@ $this->codes = array(
     'WI' => 'Wisconsin',
     'WY' => 'Wyoming'
 );
-
-?>

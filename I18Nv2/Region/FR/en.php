@@ -108,5 +108,3 @@ $this->codes = array(
     '95' => 'Val d\'Oise',
     '986' => 'Wallis and Futuna'
 );
-
-?>

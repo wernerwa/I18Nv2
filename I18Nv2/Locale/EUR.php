@@ -17,4 +17,3 @@ $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL][7] = true;
 $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL][8] = true;
 $this->currencyFormats[I18Nv2_CURRENCY_INTERNATIONAL][9] = true;
 
-?>
