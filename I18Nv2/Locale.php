@@ -302,7 +302,7 @@ class I18Nv2_Locale
              * The currency symbol is old shit on Win2k, though.
              * Some get extended/overwritten with other local conventions.
              */
-            $this->currencyFormats = array(
+            $this->currencyFormats = @array(
                 I18Nv2_CURRENCY_LOCAL => array(
                     $info['currency_symbol'],
                     $info['int_frac_digits'],
@@ -333,7 +333,7 @@ class I18Nv2_Locale
                 ),
             );
 
-            $this->numberFormats = array(
+            $this->numberFormats = @array(
                 I18Nv2_NUMBER_FLOAT => array(
                     $info['frac_digits'],
                     $info['decimal_point'],

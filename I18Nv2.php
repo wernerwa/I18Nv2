@@ -352,7 +352,7 @@ class I18Nv2
      */
     public static function &getStaticProperty($property)
     {
-        static $properties;
+        static $properties = array();
         return $properties[$property];
     }
 
