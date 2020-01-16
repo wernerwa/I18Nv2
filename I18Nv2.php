@@ -227,9 +227,14 @@ class I18Nv2
             }
         }
 
-        iconv_set_encoding('internal_encoding', $ie);
-        iconv_set_encoding('output_encoding', $oe);
-        iconv_set_encoding('input_encoding', $oe);
+        $default_charset = ini_get('default_charset');
+        if ($default_charset !== $ie) {
+            ini_set('internal_encoding', $ie);
+        }
+        if ($default_charset !== $oe) {
+            ini_set('output_encoding', $oe);
+            ini_set('input_encoding', $oe);
+        }
 
         $buffer = '';
         if ($refetchOB && $level = ob_get_level()) {

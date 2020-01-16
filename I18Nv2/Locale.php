@@ -632,9 +632,9 @@ class I18Nv2_Locale
      * Format currency
      *
      * @return  string
-     * @param   numeric $value
-     * @param   int     $overrideFormat
-     * @param   string  $overrideSymbol
+     * @param   numeric|double $value
+     * @param   int            $overrideFormat
+     * @param   string         $overrideSymbol
      */
     public function formatCurrency($value, $overrideFormat = null, $overrideSymbol = null)
     {
